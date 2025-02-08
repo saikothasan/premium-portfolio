@@ -26,7 +26,7 @@ interface GitHubRepo {
   language: string
 }
 
-const colorMap = {
+const colorMap: { [key: string]: string } = {
   JavaScript: "accent-yellow",
   TypeScript: "primary-blue",
   Python: "accent-green",
@@ -121,7 +121,9 @@ function ProjectCard({ project, index }: { project: GitHubRepo; index: number })
             </div>
             {project.language && (
               <span
-                className={`px-2 py-1 rounded-full text-sm text-white bg-${colorMap[project.language] || "gray-500"}`}
+                className={`px-2 py-1 rounded-full text-sm text-white ${
+                  project.language in colorMap ? `bg-${colorMap[project.language]}` : "bg-gray-500"
+                }`}
               >
                 {project.language}
               </span>
