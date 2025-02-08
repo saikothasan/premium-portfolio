@@ -46,7 +46,7 @@ export function GitHubProjects() {
         if (!response.ok) {
           throw new Error("Failed to fetch projects")
         }
-        const data = await response.json()
+        const data: GitHubRepo[] = await response.json()
         setProjects(data)
         setLoading(false)
       } catch (err) {
